@@ -35,7 +35,7 @@ module Guard
         return unless options[:all] || !paths.empty?
 
         short_pathes = paths.join(' ')
-        short_pathes = short_pathes[0..50] + "..." if short_pathes.length > 200
+        short_pathes = " <many files> "  if short_pathes.length > 200
         message = "Running: #{options[:all] ? 'all tests' : short_pathes}"
         UI.info message, reset: true
 
