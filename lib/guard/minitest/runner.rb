@@ -34,7 +34,9 @@ module Guard
       def run(paths, options = {})
         return unless options[:all] || !paths.empty?
 
-        message = "Running: #{options[:all] ? 'all tests' : paths.join(' ')}"
+        short_pathes = paths.join(' ')
+        short_pathes = short_pathes[0..50] + "..." if short_pathes.length > 200
+        message = "Running: #{options[:all] ? 'all tests' : short_pathes}"
         UI.info message, reset: true
 
         status = _run_command(paths, options[:all])
